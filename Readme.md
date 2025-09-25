@@ -7,3 +7,13 @@
 git clone https://github.com/Anna91-png/DjangoProject
 Установите зависимости внутри каталога проекта для создания виртуального окружения и установки зависимостей:
 poetry install
+
+
+MyShop
+
+Учебный интернет-магазин на Django с главной страницей и страницей контактов.
+
+Функции: категории и товары, контакты, адаптивный дизайн с Bootstrap.
+Установка: poetry install, .env, migrate, createsuperuser, runserver.
+Данные: через Django shell или фикстуры.
+Скриншоты: главная и контакты.

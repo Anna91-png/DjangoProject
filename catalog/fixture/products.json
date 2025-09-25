@@ -1,0 +1,22 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "iPhone 15",
+      "description": "Latest iPhone",
+      "price": 1200,
+      "category": 1
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Harry Potter Book",
+      "description": "Fantasy book",
+      "price": 20,
+      "category": 2
+    }
+  }
+]

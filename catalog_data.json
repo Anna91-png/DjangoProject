@@ -1,0 +1,38 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Смартфоны",
+      "description": "Современные телефоны"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Ноутбуки",
+      "description": "Портативные компьютеры"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "iPhone 15",
+      "description": "Флагманский смартфон Apple",
+      "price": "120000.00",
+      "category": 1
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "MacBook Air M2",
+      "description": "Лёгкий ноутбук Apple",
+      "price": "150000.00",
+      "category": 2
+    }
+  }
+]

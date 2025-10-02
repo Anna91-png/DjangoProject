@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import home, contacts_view
+from . import views
 
 urlpatterns = [
-    path("", home, name="home"),              # Главная страница
-    path("contacts/", contacts_view, name="contacts"),  # Контакты
+    path('', views.home, name='home'),
+    path('product/<int:pk>/', views.product_detail, name='product_detail'),
+    path('contacts/', views.contacts, name='contacts'),  # <- добавили
 ]

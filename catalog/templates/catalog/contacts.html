@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Контакты - MyShop</title>
-</head>
-<body>
-    <nav>
-        <a href="/">Главная</a> |
-        <a href="/contacts/">Контакты</a>
-    </nav>
+{% extends 'catalog/base.html' %}
 
-    <h1>Контактная информация</h1>
-    <ul>
-        <li>Email: info@myshop.com</li>
-        <li>Телефон: +7 999 123-45-67</li>
-        <li>Адрес: Москва, ул. Примерная, 1</li>
-    </ul>
-</body>
-</html>
+{% block content %}
+  <h1>Контактная информация</h1>
+  <p>
+    <i class="fas fa-phone" style="color: #007bff;"></i>
+    <strong>Телефон:</strong> +7 999 123-45-67
+  </p>
+  <p>
+    <i class="fas fa-map-marker-alt" style="color: #007bff;"></i>
+    <strong>Адрес:</strong> Москва, улица Примерная, д. 1
+  </p>
+  <p>
+    <i class="fas fa-envelope" style="color: #007bff;"></i>
+    <strong>Email:</strong> info@myshop.com
+  </p>
+{% endblock %}

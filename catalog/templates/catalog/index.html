@@ -1,0 +1,18 @@
+{% extends "catalog/base.html" %}
+
+{% block content %}
+<h1>Наши товары</h1>
+
+{% for category in categories %}
+    <h2>{{ category.name }}</h2>
+{% endfor %}
+
+{% for product in products %}
+    <div class="product-card">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description|truncatechars:100 }}</p>
+        <p>Цена: {{ product.price }} ₽</p>
+        <a href="{% url 'product_detail' product.pk %}">Подробнее</a>
+    </div>
+{% endfor %}
+{% endblock %}

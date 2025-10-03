@@ -10,3 +10,11 @@
     <a href="{% url 'home' %}">Назад</a>
 </body>
 </html>
+<h2>{{ product.name }}</h2>
+<p>{{ product.description }}</p>
+<p><strong>Цена:</strong> {{ product.price }} ₽</p>
+<p><strong>Контакты:</strong> {{ product.contact }}</p>
+{% if product.image %}
+  <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+{% endif %}
+{% include 'catalog/menu.html' %}

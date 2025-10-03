@@ -1,6 +1,7 @@
 {% extends 'catalog/base.html' %}
 
 {% block title %}Главная{% endblock %}
+{% include 'catalog/_menu.html' %}
 
 {% block content %}
 <h1>Наши товары</h1>
@@ -23,3 +24,4 @@
 {% endfor %}
 
 {% endblock %}
+{{ product.description|truncatechars:100 }}

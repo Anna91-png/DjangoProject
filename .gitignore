@@ -2,6 +2,10 @@
 __pycache__/
 *.py[codz]
 *$py.class
+*.pyc
+*.sqlite3
+/static/
+*.log
 
 # C extensions
 *.so

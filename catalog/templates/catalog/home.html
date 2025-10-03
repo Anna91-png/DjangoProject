@@ -12,7 +12,7 @@
       <ul>
         {% for product in category.products.all %}
           <li>
-            <strong>{{ product.name }}</strong> — {{ product.description }} — {{ product.price }} ₽
+            <strong>{{ product.name }}</strong> — {{ product.description|truncatechars:100 }} — {{ product.price }} ₽
           </li>
         {% endfor %}
       </ul>
@@ -23,6 +23,3 @@
 {% endfor %}
 
 {% endblock %}
-
-{{ product.description|truncatechars:100 }}
-

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.name }}</title>
+</head>
+<body>
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.description }}</p>
+    <a href="{% url 'home' %}">Назад</a>
+</body>
+</html>
+<h2>{{ product.name }}</h2>
+<p>{{ product.description }}</p>
+<p><strong>Цена:</strong> {{ product.price }} ₽</p>
+<p><strong>Контакты:</strong> {{ product.contact }}</p>
+{% if product.image %}
+  <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+{% endif %}
+

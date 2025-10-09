@@ -70,10 +70,3 @@ python manage.py runserver
 cpp
 Kodu kopyala
 http://127.0.0.1:8000/
-
-
-Установка:
-Клонируйте репозиторий проекта:
-git clone https://github.com/Anna91-png/DjangoProject
-Установите зависимости внутри каталога проекта для создания виртуального окружения и установки зависимостей:
-poetry install

@@ -18,7 +18,6 @@ class HomeView(TemplateView):
 class ContactsView(TemplateView):
     template_name = 'catalog/contacts.html'
 
-
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'catalog/product_list.html', {'products': products})

@@ -6,3 +6,4 @@ urlpatterns = [
     path('contacts/', ContactsView.as_view(), name='contacts'),
     path('products/', product_list, name='product_list'),
 ]
+

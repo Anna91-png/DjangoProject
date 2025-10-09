@@ -1,25 +1,34 @@
-{% extends 'catalog/base.html' %}
-
-{% block title %}Главная{% endblock %}
+{% extends "catalog/base.html" %}
 
 {% block content %}
 <h1>Наши товары</h1>
 
-{% for category in categories %}
-  <div class="section-blue">
-    <h2>{{ category.name }}</h2>
-    {% if category.products.exists %}
-      <ul>
-        {% for product in category.products.all %}
-          <li>
-            <strong>{{ product.name }}</strong> — {{ product.description|truncatechars:100 }} — {{ product.price }} ₽
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>Нет товаров в этой категории.</p>
-    {% endif %}
-  </div>
+{% for category, products in category_products.items %}
+  <h2>{{ category.name }}</h2>
+<h2>
+  {% if category.name == "Ноутбуки" %}
+    💻 <span style="color:#0055aa; font-weight:bold;">{{ category.name }}</span>
+  {% elif category.name == "Смартфоны" %}
+    📱 <span style="color:#0055aa; font-weight:bold;">{{ category.name }}</span>
+  {% else %}
+    <span style="color:#0055aa; font-weight:bold;">{{ category.name }}</span>
+  {% endif %}
+</h2>
+
+  {% if products %}
+    <div class="product-grid">
+      {% for product in products %}
+        <div class="product-card">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.description }}</p>
+          <p><strong>{{ product.price }} ₼</strong> / <strong>{{ product.price_rub|floatformat:0 }} ₽</strong></p>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>Нет товаров в этой категории.</p>
+  {% endif %}
 {% endfor %}
 
+<footer>© 2025 Мой магазин</footer>
 {% endblock %}

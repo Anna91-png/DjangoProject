@@ -28,7 +28,6 @@ class BlogCreateView(CreateView):
     template_name = 'blog/blog_form.html'
     fields = ['title', 'content', 'preview', 'is_published']
 
-
 class BlogUpdateView(UpdateView):
     model = BlogPost
     template_name = 'blog/blog_form.html'

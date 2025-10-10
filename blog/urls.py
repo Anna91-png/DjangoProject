@@ -1,8 +1,11 @@
 from django.urls import path
+from blog.apps import BlogConfig
 from .views import (
     BlogListView, BlogDetailView,
     BlogCreateView, BlogUpdateView, BlogDeleteView
 )
+
+app_name = "blog"
 
 urlpatterns = [
     path('', BlogListView.as_view(), name='blog_list'),

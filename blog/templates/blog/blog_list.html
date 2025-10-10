@@ -1,14 +1,19 @@
-{% extends "catalog/base.html" %}
+{% extends 'base.html' %}
 {% block content %}
-<h1>Блог</h1>
-{% for post in object_list %}
-  <div class="card mb-3">
-    <div class="card-body">
-      <h3 class="text-primary"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-      <p>{{ post.content|truncatechars:200 }}</p>
-      <p><strong>Просмотры:</strong> {{ post.views }}</p>
-    </div>
-  </div>
-{% endfor %}
+  <h1>📝 Блоговые записи</h1>
+  <a href="{% url 'blog:create' %}">➕ Создать новую запись</a>
+  <ul>
+    {% for post in object_list %}
+      <li>
+        <a href="{% url 'blog:detail' post.pk %}">{{ post.title }}</a>
+        {% if post.preview %}
+          <img src="{{ post.preview.url }}" alt="preview" width="100">
+        {% endif %}
+        <p>👁️ Просмотров: {{ post.view_count }}</p>
+        <p>📅 {{ post.created_at|date:"d.m.Y H:i" }}</p>
+      </li>
+    {% empty %}
+      <li>Нет опубликованных записей.</li>
+    {% endfor %}
+  </ul>
 {% endblock %}
-

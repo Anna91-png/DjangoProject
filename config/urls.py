@@ -23,6 +23,7 @@ from django.conf.urls.static import static  # ✅ добавь это
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('catalog.urls')),
+    path('blog/', include('blog.urls')),
 ]
 
 if settings.DEBUG:

@@ -1,37 +1,23 @@
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+header {
+    background-color: #e6f2ff;
+    padding: 10px;
+}
+
+.product-title {
+    color: #007bff; /* голубой цвет */
 }
 
 nav a {
-  text-decoration: none;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.product-card {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 8px;
-  text-align: center;
-}
-.product-name {
-    color: #1E90FF; /* голубой цвет */
-    font-weight: bold;
-}
-.product h3 {
-    color: #007bff; /* голубой */
-}
-.nav-link {
+    color: #007bff;
+    text-decoration: none;
     margin-right: 10px;
 }
-.section-blue {
-  background-color: #e0f0ff; /* нежно-голубой */
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+
+nav a:hover {
+    text-decoration: underline;
 }

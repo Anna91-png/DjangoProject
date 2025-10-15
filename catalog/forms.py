@@ -20,7 +20,8 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         # ✅ добавь поле "image", только если оно есть в модели Product
-        fields = ["category", "name", "description", "price"]
+        fields = ["category", "name", "description", "price", "image"]
+
 
         labels = {
             "category": "Категория",

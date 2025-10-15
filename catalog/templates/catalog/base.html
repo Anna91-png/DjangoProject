@@ -1,10 +1,9 @@
 {% load static %}
-{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Мой магазин</title>
+      <title>{% block title %}Мой сайт{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <style>
@@ -87,7 +86,7 @@
     <nav>
         <a href="{% url 'catalog:home' %}">Главная</a>
         <a href="{% url 'catalog:contacts' %}">Контакты</a>
-        <a href="/blogs/">Блог</a>
+        <a href="/blog/">Блог</a>
     </nav>
 </header>
 

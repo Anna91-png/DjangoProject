@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'catalog/base.html' %}
 {% block content %}
   <h1>📝 Блоговые записи</h1>
-  <a href="{% url 'blog:create' %}">➕ Создать новую запись</a>
+  <a href="{% url 'blog:blog_create' %}">➕ Создать новую запись</a>
   <ul>
     {% for post in object_list %}
       <li>

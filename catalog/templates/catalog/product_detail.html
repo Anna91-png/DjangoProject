@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'catalog/base.html' %}
 
 {% block content %}
 <h1>Наши товары</h1>
 <div class="product-grid">
-  {% for product in products %}
+
     <div class="product-card">
       <h2>{{ product.name }}</h2>
       <p>{{ product.description }}</p>
@@ -12,6 +12,7 @@
         <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200">
       {% endif %}
     </div>
-  {% endfor %}
+   <a href="{% url 'catalog:product_update' product.pk %}" class="btn btn-sm btn-warning">✏️ Изменить</a>
+              <a href="{% url 'catalog:product_delete' product.pk %}" class="btn btn-sm btn-danger">🗑️ Удалить</a>
 </div>
 {% endblock %}

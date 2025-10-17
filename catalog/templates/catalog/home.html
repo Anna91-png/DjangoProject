@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1>Наши товары</h1>
+<a href="{% url 'catalog:product_create' %}" class="btn btn-success mb-3">➕ Создать продукт </a>
 
 {% for category, products in category_products.items %}
 <h2>

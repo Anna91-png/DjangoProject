@@ -5,7 +5,7 @@
   <ul>
     {% for post in object_list %}
       <li>
-        <a href="{% url 'blog:detail' post.pk %}">{{ post.title }}</a>
+        <a href="{% url 'blog:blog_detail' post.pk %}">{{ post.title }}</a>
         {% if post.preview %}
           <img src="{{ post.preview.url }}" alt="preview" width="100">
         {% endif %}

@@ -1,5 +1,4 @@
 {% extends 'catalog/base.html' %}
-
 {% block content %}
   <h1>{% if object %}✏️ Редактировать{% else %}➕ Создать{% endif %} запись</h1>
   <form method="post" enctype="multipart/form-data">
@@ -7,5 +6,5 @@
     {{ form.as_p }}
     <button type="submit">💾 Сохранить</button>
   </form>
-  <a href="{% url 'blog:list' %}">⬅️ Назад</a>
+  <a href="{% url 'blog:blog_list' %}">⬅️ Назад</a>
 {% endblock %}

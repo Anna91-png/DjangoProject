@@ -1,9 +1,12 @@
 {% extends 'catalog/base.html' %}
+
 {% block content %}
-  <h1>Удалить запись "{{ object.title }}"?</h1>
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit">🗑️ Подтвердить удаление</button>
-  </form>
-  <a href="{% url 'blog:blog_list' %}">⬅️ Назад</a>
+  <div class="container mt-4">
+    <h2 class="mb-4">Удалить запись: <em>"{{ object.title }}"</em>?</h2>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">🗑️ Подтвердить удаление</button>
+      <a href="{% url 'blog:blog_list' %}" class="btn btn-secondary ms-2">⬅️ Назад</a>
+    </form>
+  </div>
 {% endblock %}

@@ -4,7 +4,6 @@
 <h1>Наши товары</h1>
 
 {% for category, products in category_products.items %}
-  <h2>{{ category.name }}</h2>
 <h2>
   {% if category.name == "Ноутбуки" %}
     💻 <span style="color:#0055aa; font-weight:bold;">{{ category.name }}</span>
@@ -30,3 +29,4 @@
   {% endif %}
 {% endfor %}
 {% endblock %}
+

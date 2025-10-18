@@ -5,7 +5,7 @@ from .views import (
     BlogCreateView, BlogUpdateView, BlogDeleteView
 )
 
-app_name = "blog"
+app_name = BlogConfig.name
 
 urlpatterns = [
     path('', BlogListView.as_view(), name='blog_list'),

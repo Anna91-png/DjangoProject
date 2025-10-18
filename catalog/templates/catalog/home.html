@@ -2,9 +2,9 @@
 
 {% block content %}
 <h1>Наши товары</h1>
+<a href="{% url 'catalog:product_create' %}" class="btn btn-success mb-3">➕ Создать продукт </a>
 
 {% for category, products in category_products.items %}
-  <h2>{{ category.name }}</h2>
 <h2>
   {% if category.name == "Ноутбуки" %}
     💻 <span style="color:#0055aa; font-weight:bold;">{{ category.name }}</span>
@@ -29,6 +29,5 @@
     <p>Нет товаров в этой категории.</p>
   {% endif %}
 {% endfor %}
-
-<footer>© 2025 Мой магазин</footer>
 {% endblock %}
+

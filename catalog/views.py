@@ -52,3 +52,25 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):  # ✅ доступ т�
     model = Product
     template_name = "catalog/product_confirm_delete.html"
     success_url = reverse_lazy("catalog:product_list")
+
+def create_product(request):
+    form = ProductForm(request.POST)
+    if form.is_valid():
+        product = form.save(commit=False)
+        product.owner = request.user
+        product.save()
+
+def delete_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.user == product.owner or request.user.has_perm('catalog.delete_product'):
+        product.delete()
+    else:
+        raise PermissionDenied
+
+def unpublish_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.user.has_perm('catalog.can_unpublish_product'):
+        product.is_published = False
+        product.save()
+    else:
+        raise PermissionDenied

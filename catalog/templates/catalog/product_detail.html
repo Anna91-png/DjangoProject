@@ -1,18 +1,31 @@
 {% extends 'catalog/base.html' %}
 
 {% block content %}
-<h1>Наши товары</h1>
-<div class="product-grid">
+<h1>{{ product.name }}</h1>
 
-    <div class="product-card">
-      <h2>{{ product.name }}</h2>
-      <p>{{ product.description }}</p>
-      <p><strong>{{ product.price }} ₼</strong></p>
-      {% if product.image %}
-        <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200">
-      {% endif %}
-    </div>
-   <a href="{% url 'catalog:product_update' product.pk %}" class="btn btn-sm btn-warning">✏️ Изменить</a>
-              <a href="{% url 'catalog:product_delete' product.pk %}" class="btn btn-sm btn-danger">🗑️ Удалить</a>
+<div class="product-card">
+  <p>{{ product.description }}</p>
+  <p><strong>{{ product.price }} ₼</strong> / <strong>{{ product.price_rub|floatformat:0 }} ₽</strong></p>
+
+  {% if product.image %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" width="300">
+  {% endif %}
 </div>
+
+<hr>
+
+{# 🔒 Кнопки только для владельца #}
+{% if request.user == product.owner %}
+  <a href="{% url 'catalog:product_update' product.pk %}" class="btn btn-sm btn-warning">✏️ Изменить</a>
+  <a href="{% url 'catalog:product_delete' product.pk %}" class="btn btn-sm btn-danger">🗑️ Удалить</a>
+{% endif %}
+
+{# 🔒 Кнопка снятия с публикации — только для модератора #}
+{% if request.user.has_perm('catalog.can_unpublish_product') %}
+  <form method="post" action="{% url 'catalog:product_unpublish' product.pk %}" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-sm btn-secondary">🚫 Снять с публикации</button>
+  </form>
+{% endif %}
+
 {% endblock %}

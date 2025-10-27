@@ -1,8 +1,6 @@
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.core.exceptions import PermissionDenied
-from django.shortcuts import render, get_object_or_404
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 
@@ -18,10 +16,7 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         categories = Category.objects.all()
         context['categories'] = categories
-        context['category_products'] = {
-            category: Product.objects.filter(category=category)
-            for category in categories
-        }
+        context['category_products'] = {category: Product.objects.filter(category=category) for category in categories}
         return context
 
 
@@ -67,35 +62,3 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = "catalog/product_confirm_delete.html"
     success_url = reverse_lazy("catalog:product_list")
-
-
-def product_list(request):
-    products = Product.objects.all()
-    return render(request, 'catalog/product_list.html', {'products': products})
-
-
-def create_product(request):
-    form = ProductForm(request.POST or None)
-    if form.is_valid():
-        product = form.save(commit=False)
-        product.owner = request.user
-        product.save()
-        return redirect("catalog:product_list")
-    return render(request, "catalog/product_form.html", {"form": form})
-
-
-def delete_product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    if request.user == product.owner or request.user.has_perm('catalog.delete_product'):
-        product.delete()
-        return redirect("catalog:product_list")
-    raise PermissionDenied
-
-
-def unpublish_product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    if request.user.has_perm('catalog.can_unpublish_product'):
-        product.is_published = False
-        product.save()
-        return redirect("catalog:product_list")
-    raise PermissionDenied

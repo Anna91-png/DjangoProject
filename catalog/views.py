@@ -5,6 +5,11 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Product
 from .forms import ProductForm
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView
+from catalog.services.product_service import get_cached_products_by_category
+
 
 class HomeView(TemplateView):
     template_name = "catalog/home.html"
@@ -26,11 +31,15 @@ def product_list(request):
     products = Product.objects.all()
     return render(request, 'catalog/product_list.html', {'products': products})
 
-class ProductListView(ListView):
-    model = Product
-    template_name = "catalog/product_list.html"
+class CategoryProductListView(ListView):
+    template_name = "catalog/products_by_category.html"
     context_object_name = "products"
 
+    def get_queryset(self):
+        category_slug = self.kwargs["slug"]
+        return get_cached_products_by_category(category_slug)
+
+@method_decorator(cache_page(60 * 15), name='dispatch')  # 15 минут
 class ProductDetailView(DetailView):
     model = Product
     template_name = "catalog/product_detail.html"
